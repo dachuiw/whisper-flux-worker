@@ -1,7 +1,8 @@
 # RunPod Serverless: Flux.1 Dev + LoRA + I2I worker
 # Builds on RunPod's infrastructure; models download at cold start.
+# Base: PyTorch 2.7.1 + CUDA 12.90 + Ubuntu 22.04
 
-FROM runpod/base:0.7.0-cuda12.4.1
+FROM runpod/pytorch:1.0.7-cu1290-torch271-ubuntu2204
 
 # Install Python dependencies
 COPY requirements.txt /requirements.txt
