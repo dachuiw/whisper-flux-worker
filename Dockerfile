@@ -2,7 +2,7 @@
 # Base: PyTorch 2.7.1 + CUDA 12.90 + Ubuntu 22.04
 # Model downloads at cold start via runtime HF_TOKEN env var
 
-FROM runpod/pytorch:1.0.7-cu1290-torch271-ubuntu2204
+FROM runpod/pytorch:2.2.1-cuda12.1.0-ubuntu22.04
 
 # Install Python dependencies
 COPY requirements.txt /requirements.txt
