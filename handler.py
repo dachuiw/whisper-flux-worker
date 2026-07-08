@@ -189,17 +189,14 @@ def generate_img2img(job_input: dict) -> dict:
             generator=generator,
         )
     else:
-        # Fallback: load I2I pipeline dynamically
-        from diffusers import FluxImg2ImgPipeline
-        local_i2i = FluxImg2ImgPipeline(**pipe.components)
-        local_i2i.enable_model_cpu_offload()
-        local_i2i.enable_attention_slicing()
-        result = local_i2i(
+        # Fallback: use T2I pipeline (ignores input image, generates from prompt)
+        log.warning("FluxImg2ImgPipeline not available, falling back to T2I")
+        result = pipe(
             prompt=prompt,
-            image=init_image,
-            strength=strength,
             num_inference_steps=steps,
             guidance_scale=guidance,
+            width=init_image.width,
+            height=init_image.height,
             generator=generator,
         )
 
