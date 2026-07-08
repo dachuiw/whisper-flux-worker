@@ -6,7 +6,7 @@ FROM runpod/pytorch:1.0.7-cu1290-torch271-ubuntu2204
 
 # Install Python dependencies
 COPY requirements.txt /requirements.txt
-RUN pip install --no-cache-dir -r /requirements.txt && \
+RUN python3 -m pip install --no-cache-dir -r /requirements.txt && \
     python3 -c "from diffusers import FluxPipeline; print('✅ FluxPipeline imported OK')" && \
     python3 -c "from diffusers import FluxImg2ImgPipeline; print('✅ FluxImg2ImgPipeline imported OK')" && \
     python3 -c "import runpod; print('✅ runpod imported OK')"
